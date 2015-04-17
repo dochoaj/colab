@@ -13,13 +13,23 @@
 					$('<div>Error al iniciar sesion</div>').insertBefore('#envBot').delay(1000).fadeOut();
 					e.preventDefault();
 				}
+				else
+					$.post( $("#myForm").attr("action"),
+							$("#myForm: input").serializeArray(),
+								function(data){
+									$("div#ack").html(data);
+								}	);
+					$("myForm").submit(function(){
+						return false;
+					});
+
 
 			});
 		});
 	</script>
 </head>
 <body>
-	<form method="POST" action="login.php">
+	<form method="POST" action="login.php" id="myForm">
 		<label for="usuario">Usuario: </label><br>
 		<input type="text" name="usuario" id="usuario"/><br>
 		<label for="pass">Contraseña: </label><br>
@@ -28,6 +38,6 @@
 		</label>
 	</form>
 	
-
+<div id="ack"></div>
 </body>
 </html>

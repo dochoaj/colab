@@ -9,11 +9,14 @@ $sql  = "SELECT idInvest FROM investigadores WHERE nomInvest = '$user' AND pasIn
 $comprobar = mysql_query($sql);
 
 if(mysql_num_rows($comprobar) > 0){
-	header("Location: www.google.cl");
+	$id_usuario = mysql_result($comprobar, 0);
+	setcookie("colab_userid","$user",time()+3600);
+	header("Location: investigaciones.php");
+
 }
 else{
 	
-	header("Location: index.html");
+	echo "usuario/contraseña invalidos";
 }
 
 ?>
