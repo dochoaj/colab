@@ -1,0 +1,33 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Login colaboratorio</title>
+	<script type="text/javascript">	</script>
+	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+	<script>
+		$(document).on('ready', function(){
+			$("#envBot").on('click', function(e){
+				var user = $("#usuario").val();
+				var pwd = $("#pass").val();
+				if( user == "" || pwd == ""){
+					$('<div>Error al iniciar sesion</div>').insertBefore('#envBot').delay(1000).fadeOut();
+					e.preventDefault();
+				}
+
+			});
+		});
+	</script>
+</head>
+<body>
+	<form method="POST" action="login.php">
+		<label for="usuario">Usuario: </label><br>
+		<input type="text" name="usuario" id="usuario"/><br>
+		<label for="pass">Contraseña: </label><br>
+		<input type="password" name="pass" id="pass"/><br>
+		<input type="submit" value="Iniciar Sesión" id="envBot"/>	
+		</label>
+	</form>
+	
+
+</body>
+</html>
